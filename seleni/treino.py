@@ -28,6 +28,8 @@ for nome_produtos,preco_produtos in zip(nome_produtos,preco_produtos):
     #criar um arquivo , a letra 'a' de apendde pra adicionar as info.
     with open('preços.csv','a', encoding='utf-8') as arquivo:
             arquivo.write(f'{nome_produtos.text},{preco_produtos.text},{os.linesep}')
+            
+
 
 
 
