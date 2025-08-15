@@ -33,25 +33,24 @@ df=pd.read_csv("C:/Users/evely/Documents/estudos/python/preços2.csv" , names=["
 print(df)
 
             
-#Caminho do seu arquivo CSV
 caminho_csv = "C:/Users/evely/Documents/estudos/python/preços2.csv"
 
-# Configurações do e-mail
+
 email_origem = "jm4642294@gmail.com"
-senha = "lzqq uuen vdhp xijw"  # use senha de app (não a senha normal)
+senha = "lzqq uuen vdhp xijw"  
 email_destino = "jefersonmartins99@hotmail.com"
 assunto="Relatório de Preços e Modelos"
-# Cria o corpo da mensagem
+
 mensagem = MIMEMultipart()
 mensagem["From"] = email_origem
 mensagem["To"] = email_destino
 mensagem["Subject"] = assunto
 
-# Corpo do e-mail em texto
+
 corpo_email = "Segue em anexo o DataFrame com preços e modelos."
 mensagem.attach(MIMEText(corpo_email, "plain"))
 
-# Anexa o CSV
+
 with open(caminho_csv, "rb") as arquivo:
     parte = MIMEBase("application", "octet-stream")
     parte.set_payload(arquivo.read())
@@ -60,7 +59,6 @@ encoders.encode_base64(parte)
 parte.add_header("Content-Disposition", f"attachment; filename=precos.csv")
 mensagem.attach(parte)
 
-# Conexão com o servidor SMTP do Gmail
 
 servidor = smtplib.SMTP("smtp.gmail.com", 587)
 servidor.starttls()
